@@ -32,7 +32,7 @@ function wp_wc_validate_cpf_field( $username, $email, $validation_errors ) {
 	if ( isset( $_POST['billing_cpf'] ) && !empty( $_POST['billing_cpf'] ) ) {
 		
 		//validação web api		
-		$response = wp_remote_get( 'http://amafresp.afresp.org.br/consulta-cpf/api/Validador/'.$_POST['billing_cpf'] );
+		$response = wp_remote_get( '{URL - API}'.$_POST['billing_cpf'] );
 		
 		//Verifica se a requisicao obteve sucesso
 		if(wp_remote_retrieve_response_code( $response ) == status_code_successful )
@@ -70,7 +70,7 @@ function wp_wc_save_cpf_field( $customer_id ) {
 		update_user_meta( $customer_id, 'billing_cpf', sanitize_text_field( $_POST['billing_cpf'] ) );
 				
 		//validação web api		
-		$response = wp_remote_get( 'http://amafresp.afresp.org.br/consulta-cpf/api/Associado/'.$_POST['billing_cpf'] );
+		$response = wp_remote_get( '{URL - API}'.$_POST['billing_cpf'] );
 		
 		//Verifica se a requisicao obteve sucesso
 		if(wp_remote_retrieve_response_code( $response ) == status_code_successful )
